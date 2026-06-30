@@ -14,3 +14,7 @@ outputs
 options
 basicsr/inference_outputs
 inference_outputs
+# uv / environment
+.venv/
+# downloaded model checkpoints (fetch via gdown, see readme)
+trained_models/
