@@ -1,0 +1,63 @@
+name: Turtle_Deblur_Inference
+model_type: VideoRestorationModel
+scale: 1
+num_gpu: 1
+manual_seed: 10
+n_sequence: 5 # n_frames used by the original training setup
+dir_data: ['<DATA_ROOT>/']
+n_colors: 3
+rgb_range: 1
+no_augment: False
+loss_type: 1*L1
+patch_size: 192
+size_must_mode: 4
+model: Turtle_arch
+pretrain_models_dir: None
+type: deblurring
+dim: 64
+Enc_blocks: [2, 6, 10]
+Middle_blocks: 11
+Dec_blocks: [10, 6, 2]
+num_refinement_blocks: 2
+use_both_input: False
+num_heads: [1, 2, 4, 8]
+num_frames_tocache: 3
+ffn_expansion_factor: 2.5
+
+encoder1_attn_type1 : "ReducedAttn"
+encoder1_attn_type2 : "ReducedAttn"
+encoder1_ffw_type : "FFW"
+
+encoder2_attn_type1 : "ReducedAttn"
+encoder2_attn_type2 : "ReducedAttn"
+encoder2_ffw_type : "FFW"
+
+encoder3_attn_type1 : "Channel"
+encoder3_attn_type2 : "Channel"
+encoder3_ffw_type : "GFFW"
+
+decoder1_attn_type1 : "Channel"
+decoder1_attn_type2 : "CHM"
+decoder1_ffw_type : "GFFW"
+
+decoder2_attn_type1 : "Channel"
+decoder2_attn_type2 : "CHM"
+decoder2_ffw_type : "GFFW"
+
+decoder3_attn_type1 : "Channel"
+decoder3_attn_type2 : "CHM"
+decoder3_ffw_type : "GFFW"
+
+latent_attn_type1 : "FHR"
+latent_attn_type2 : "Channel"
+latent_attn_type3 : "FHR"
+latent_ffw_type : "GFFW"
+
+refinement_attn_type1 : "ReducedAttn"
+refinement_attn_type2 : "ReducedAttn"
+refinement_ffw_type : "GFFW"
+
+path:
+  pretrain_network_g: ~
+  strict_load_g: true
+  resume_state: ~
